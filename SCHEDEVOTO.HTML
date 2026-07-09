@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheda di Voto - Cena con Delitto</title>
+
+<style>
+  body {
+    background: #0a0a0c;
+    color: #f2e4c4;
+    font-family: "Cormorant Garamond", serif;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: auto;
+    background: #111114;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 0 35px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,230,180,0.12);
+  }
+
+  h2 {
+    text-align: center;
+    letter-spacing: 0.15rem;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-size: 1.1rem;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,230,180,0.25);
+    background: #0f0f11;
+    color: #f2e4c4;
+    font-size: 1rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 25px;
+    background: transparent;
+    border: 1px solid #f2e4c4;
+    border-radius: 999px;
+    color: #f2e4c4;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+
+  button:hover {
+    background: #f2e4c4;
+    color: #0a0a0c;
+    box-shadow: 0 0 12px rgba(255,230,180,0.4);
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Scheda di Voto</h2>
+
+  <form id="voteForm">
+
+    <label>Nome del sospettato</label>
+    <input type="text" name="nome" required>
+
+    <label>Movente</label>
+    <textarea name="movente" rows="3" required></textarea>
+
+    <label>Dinamica dell'omicidio</label>
+    <textarea name="dinamica" rows="4" required></textarea>
+
+    <button type="submit">INVIA SU WHATSAPP</button>
+  </form>
+</div>
+
+<script>
+document.getElementById("voteForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const nome = e.target.nome.value;
+  const movente = e.target.movente.value;
+  const dinamica = e.target.dinamica.value;
+
+  // NUMERO DEL REGISTA (INSERISCI QUI IL NUMERO)
+  const regista = "393471795744"; // 
+
+  const text = encodeURIComponent(
+    "🕯️ *Voto Cena con Delitto*\n\n" +
+    "👤 *Sospettato:* " + nome + "\n\n" +
+    "💠 *Movente:* " + movente + "\n\n" +
+    "🔪 *Dinamica:* " + dinamica + "\n\n"
+  );
+
+  window.location.href = `https://wa.me/${regista}?text=${text}`;
+});
+</script>
+
+</body>
+</html>
